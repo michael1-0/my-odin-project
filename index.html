@@ -83,23 +83,6 @@
         grid-column: 1 / -1;
       }
 
-      @media (min-width: 768px) {
-        .bento-card.featured {
-          grid-column: span 2;
-          grid-row: span 2;
-        }
-
-        .bento-card.wide {
-          grid-column: span 2;
-          grid-row: span 1;
-        }
-
-        .bento-card.tall {
-          grid-column: span 1;
-          grid-row: span 2;
-        }
-      }
-
       .card-content {
         display: flex;
         flex-direction: column;
@@ -178,6 +161,35 @@
 
       .top {
         color: #141414;
+      }
+
+      @media (min-width: 768px) {
+        .bento-card.featured {
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+
+        .bento-card.wide {
+          grid-column: span 2;
+          grid-row: span 1;
+        }
+
+        .bento-card.tall {
+          grid-column: span 1;
+          grid-row: span 2;
+        }
+      }
+
+      @media (max-width: 425px) {
+        body {
+          padding: 1rem;
+        }
+        .bento-grid {
+          grid-template-columns: 1fr;
+        }
+        .bento-card {
+          padding: 0.8rem;
+        }
       }
     </style>
   </head>
@@ -1069,7 +1081,9 @@
       </div>
     </main>
     <footer>
-      Thank you <a class="top" href="https://www.theodinproject.com/">The Odin Project</a>.
+      Thank you
+      <a class="top" href="https://www.theodinproject.com/">The Odin Project</a
+      >.
     </footer>
   </body>
 </html>
