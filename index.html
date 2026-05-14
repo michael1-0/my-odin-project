@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mike's Odin Project</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+      :root {
+        --bg-color: #c7c2b3;
+        --card-bg: #c7c2b3;
+        --text-main: #3f3f37;
+        --text-muted: #464640;
+        --border-color: #333333;
+        --accent: #3f3f37;
+        --radius: 4px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        font-family: "Source Code Pro";
+        line-height: 1.6;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        max-width: 800px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      main {
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 4rem;
+      }
+
+      /* Bento Grid Layout */
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        grid-auto-flow: dense;
+      }
+
+      /* Card Styling */
+      .bento-card {
+        background-color: var(--card-bg);
+        border: 1px solid #a09b8b;
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Size Variants */
+      .bento-card.featured {
+        grid-column: 1 / -1;
+      }
+
+      @media (min-width: 768px) {
+        .bento-card.featured {
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+
+        .bento-card.wide {
+          grid-column: span 2;
+          grid-row: span 1;
+        }
+
+        .bento-card.tall {
+          grid-column: span 1;
+          grid-row: span 2;
+        }
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-desc {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .card-image-container {
+        width: 100%;
+        border-radius: var(--radius);
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        background-color: #2a2a2a;
+        display: flex;
+        align-items: center;
+        border: 1px solid #a09b8b;
+        justify-content: center;
+        /* aspect-ratio: 16 / 9; */
+      }
+
+      .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Links area */
+      .card-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: auto;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background-color: var(--text-main);
+        color: var(--bg-color);
+      }
+
+      .btn-primary:hover {
+        background-color: #3e3e3f;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Mike's Odin Project</h1>
+    </header>
+
+    <main>
+      <div class="bento-grid">
+        <!-- Row 1: Large featured + tall side card -->
+        <article class="bento-card featured">
+          <div class="card-image-container">
+            <img
+              src="/images/odin-book.png"
+              alt="Odin-Book screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Odin-Book</h3>
+            <p class="card-desc">
+              Complete social media application, ongoing development.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-book"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card tall">
+          <div class="card-image-container">
+            <img
+              src="/images/messaging-app.png"
+              alt="Messaging App screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Messaging App</h3>
+            <p class="card-desc">
+              Realtime messaging app using WebSockets powered by socket.io.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-messaging-app-frontend.vercel.app/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-messaging-app"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 2: Two wide cards -->
+        <article class="bento-card wide">
+          <div class="card-image-container">
+            <img
+              src="/images/wheres-waldo.png"
+              alt="Where's Waldo screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Where's Waldo</h3>
+            <p class="card-desc">Where's waldo?</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-wheres-waldo-frontend.vercel.app/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-wheres-waldo"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card wide">
+          <div class="card-image-container">
+            <img
+              src="/images/blog-api.png"
+              alt="Blog API screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Blog API</h3>
+            <p class="card-desc">
+              RESTful API implementation on blogging, complete with polyrepo
+              decoupled architecture.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-blog-rho.vercel.app/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-blog"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 3: Standard + tall + standard -->
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/file-uploader.png"
+              alt="File Uploader screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">File Uploader</h3>
+            <p class="card-desc">
+              Implementation of a file uploader app using Prisma.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-file-uploader-66jd.onrender.com/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-file-uploader"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card tall">
+          <div class="card-image-container">
+            <img
+              src="/images/members-only.png"
+              alt="Member's Only screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Member's Only</h3>
+            <p class="card-desc">
+              Implementation of authentication and authorization using
+              Passport.js and Express.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-members-only-3f88.onrender.com/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-members-only"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/inventory-application.png"
+              alt="Inventory Application screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Inventory Application</h3>
+            <p class="card-desc">
+              Express powered inventory application with Postgres as its
+              database.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-inventory-application-mspg.onrender.com/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-inventory-application"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 4: Wide + standard -->
+        <article class="bento-card wide">
+          <div class="card-image-container">
+            <img
+              src="images/basic-informational-site.png"
+              alt="Basic Informational Site screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Basic Informational Site</h3>
+            <p class="card-desc">Node.js powered informational site server.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-info-site"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/shopping-cart.png"
+              alt="Shopping Cart screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Shopping Cart</h3>
+            <p class="card-desc">
+              React based shopping cart site using RTL for testing and React
+              Router for routing.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-shopping-cart-zeta-one.vercel.app"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-shopping-cart"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 5: Standard + featured -->
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/memory-card.png"
+              alt="Memory Card screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Memory Card</h3>
+            <p class="card-desc">Memory card game built using React.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-memory-card-theta-brown.vercel.app"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-memory-card"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card featured">
+          <div class="card-image-container">
+            <img
+              src="/images/cv-application.png"
+              alt="CV Application screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">CV Application</h3>
+            <p class="card-desc">React based CV generator.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://odin-cv-omega.vercel.app/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-cv"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 6: Wide + standard -->
+        <article class="bento-card wide">
+          <div class="card-image-container">
+            <img
+              src="/images/homepage.png"
+              alt="Homepage screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Homepage</h3>
+            <p class="card-desc">
+              Advanced HTML and CSS with mobile, tablet, desktop responsiveness.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-homepage/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-homepage"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/battleship.png"
+              alt="Battleship screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Battleship</h3>
+            <p class="card-desc">
+              Test-driven development approach on the game Battleship.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-battleship/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-battleship"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 7: Standard + tall -->
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/knights-travails.png"
+              alt="Knights Travails screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Knights Travails</h3>
+            <p class="card-desc">
+              Implementation of implicit graph data structure on a knight's
+              moves.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-knights-travails"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card tall">
+          <div class="card-image-container">
+            <img
+              src="/images/binary-search-trees.jpg"
+              alt="Binary Search Trees screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Binary Search Trees</h3>
+            <p class="card-desc">
+              An implementation of binary search tree using Javascript.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-bst"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/hashmap.png"
+              alt="HashMap screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">HashMap</h3>
+            <p class="card-desc">
+              Implementation of hash map data structure using JavaScript.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-hash-map"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 8: Wide + standard -->
+        <article class="bento-card wide">
+          <div class="card-image-container">
+            <img
+              src="/images/linked-list.png"
+              alt="Linked Lists screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Linked Lists</h3>
+            <p class="card-desc">
+              Implementation of linked list data structure in JavaScript.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-linked-list"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/recursion.png"
+              alt="Recursion screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Recursion</h3>
+            <p class="card-desc">
+              An implementation of Fibonacci sequence and merge sort using
+              recursion.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-recursion"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 9: Standard + tall -->
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/testing-practice.png"
+              alt="Testing Practice screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Testing Practice</h3>
+            <p class="card-desc">
+              Practice for test-driven development using Jest.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://github.com/michael1-0/odin-testing-practice"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card tall">
+          <div class="card-image-container">
+            <img
+              src="/images/weather-app.png"
+              alt="Weather App screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Weather App</h3>
+            <p class="card-desc">
+              Weather information consuming VisualCrossing API.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-weather/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-weather"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/todo-list.png"
+              alt="Todo List screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Todo List</h3>
+            <p class="card-desc">
+              Simple to-do list on the browser using localStorage.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-to-do/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-to-do"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 10: Wide + standard -->
+        <article class="bento-card wide">
+          <div class="card-image-container">
+            <img
+              src="/images/restaurant.png"
+              alt="Restaurant Page screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Restaurant Page</h3>
+            <p class="card-desc">
+              Simple restaurant landing page to serve as DOM manipulation
+              practice without reloading.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin_restaurant/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin_restaurant"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/tic-tac-toe.png"
+              alt="Tic Tac Toe screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Tic Tac Toe</h3>
+            <p class="card-desc">Tic-tac-toe game on the browser.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-tic-tac-toe/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-tic-tac-toe"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 11: Standard + tall -->
+        <article class="bento-card tall">
+          <div class="card-image-container">
+            <img
+              src="/images/library.png"
+              alt="Library screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Library</h3>
+            <p class="card-desc">Simple library to store book information.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-library/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-library"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/admin-dashboard.png"
+              alt="Admin Dashboard screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Admin Dashboard</h3>
+            <p class="card-desc">CSS Grid practice on admin dashboard</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-dashboard/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-dashboard"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/signup-form.png"
+              alt="Sign-up Form screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Sign-up Form</h3>
+            <p class="card-desc">HTML Forms practice on fancy sign-up form.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-forms/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-forms"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+        <!-- Row 1: Featured + standard -->
+        <article class="bento-card featured">
+          <div class="card-image-container">
+            <img
+              src="/images/calculator.png"
+              alt="Calculator screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Calculator</h3>
+            <p class="card-desc">Enhanced calculator on the browser.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-calculator/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-calculator"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card tall">
+          <div class="card-image-container">
+            <img
+              src="/images/etch-a-sketch.png"
+              alt="Etch-a-Sketch screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Etch-a-Sketch</h3>
+            <p class="card-desc">Simple etch a sketch on the browser.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-etch-a-sketch/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-etch-a-sketch"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <!-- Row 2: Wide + standard -->
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/landing-page.png"
+              alt="Landing Page screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Landing Page</h3>
+            <p class="card-desc">Simple odin themed landing page.</p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-landing-page/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-landing-page"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-image-container">
+            <img
+              src="/images/recipes.png"
+              alt="Recipes screenshot"
+              class="card-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Recipes</h3>
+            <p class="card-desc">
+              Simple HTML recipe page consisting of my favorite dishes.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a
+              href="https://michael1-0.github.io/odin-recipes/"
+              target="_blank"
+              class="btn btn-primary"
+              >Live</a
+            >
+            <a
+              href="https://github.com/michael1-0/odin-recipes"
+              target="_blank"
+              class="btn btn-secondary"
+              >Repo</a
+            >
+          </div>
+        </article>
+      </div>
+    </main>
+    <footer>
+      Thank you <a href="https://www.theodinproject.com/">The Odin Project</a>.
+    </footer>
+  </body>
+</html>
